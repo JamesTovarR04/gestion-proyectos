@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\EmpleadoController;
+use App\Http\Controllers\TareaController;
+use App\Http\Controllers\DocumentoController;
+use App\Http\Controllers\ProyectoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,4 +18,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::post('proyectos', [ProyectoController::class, 'store']);
+
 Route::post('empleados', [EmpleadoController::class, 'store']);
+
+Route::post('tareas', [TareaController::class, 'store']);
+
+Route::post('documentos', [DocumentoController::class, 'store']);
+
