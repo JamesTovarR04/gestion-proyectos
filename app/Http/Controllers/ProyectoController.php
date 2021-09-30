@@ -26,7 +26,7 @@ class ProyectoController extends Controller
     {
         $validacion = Validator::make($request->all(),[
             'nombre_clave'    => 'required|unique:true|string|max:100',
-            'denominacion_comercial'  => 'required|string|max:20',
+            'denominacion_comercial'  => 'required|string|max:40',
             'fecha_inicio'     => 'required|date',
             'fecha_finalizacion' => 'required|date',
             'estado' => 'required|boolean'
@@ -57,4 +57,41 @@ class ProyectoController extends Controller
         return response()->json(["result"=>"eliminado"], 200);
     }
 
+    // Editar proyecto
+    public function update(Request $request, $id){
+        
+        $validacion = Validator::make($request->all(),[
+            'nombre_clave'    => 'string|max:100',
+            'denominacion_comercial'  => 'string|max:40',
+            'fecha_inicio'     => 'date',
+            'fecha_finalizacion' => 'date',
+            'estado' => 'boolean'
+        ]);
+
+        if($validacion->fails()){
+            return response(['errors' => $validacion->errors()->all()], 422);
+        }
+
+        $proyecto = Proyecto::find($id);
+
+        if($request['nombre_clave']){
+            $proyecto->nombre_clave = $request['nombre_clave'];
+        }
+        if($request['denominacion_comercial']){
+            $proyecto->denominacion_comercial = $request['denominacion_comercial'];
+        }
+        if($request['fecha_inicio']){
+            $proyecto->fecha_inicio = $request['fecha_inicio'];
+        }
+        if($request['fecha_finalizacion']){
+            $proyecto->fecha_finalizacion = $request['fecha_finalizacion'];
+        }
+        if($request['estado']){
+            $proyecto->estado = $request['estado'];
+        }
+
+        $proyecto->save();
+
+        return response()->json(["result" => "actualizado"], 200);
+    }
 }
