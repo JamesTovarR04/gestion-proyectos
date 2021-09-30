@@ -55,7 +55,7 @@ class TareaController extends Controller
     public function destroy($id){
         $tareaAEliminar = Tarea::find($id);
         $tareaAEliminar->delete();
-        return response()->json(["result"=>"eliminado"], 200);
+        return response()->json(["result"=>" tarea eliminada"], 200);
     }
 
     //Editar tarea
@@ -101,6 +101,6 @@ class TareaController extends Controller
 
         $tarea->save();
 
-        return response()->json(["result" => "actualizado"], 200);
+        return response()->json(["result" => " tarea actualizada"], 200);
     }
 }

@@ -51,7 +51,7 @@ class EmpleadoController extends Controller
 
         $empleado->save();
 
-        return response()->json(["result"=>"creado"], 201);
+        return response()->json(["result"=>" se creo el empleado"], 201);
     }
 
     //eliminar empleado 
@@ -59,7 +59,7 @@ class EmpleadoController extends Controller
     {
         $empleadoAEliminar = Empleado::fint($id);
         $empleadoAEliminar->delete();
-        return response()->json(["result"=>"eliminado"], 200);
+        return response()->json(["result"=>" se elimino el empleado"], 200);
     }
 
     //Editar un empleado 
@@ -111,7 +111,7 @@ class EmpleadoController extends Controller
 
         $empleado->save();
 
-        return response()->json(["result" => "actualizado"], 200);
+        return response()->json(["result" => " se actualizo un empleado"], 200);
 
     }
 

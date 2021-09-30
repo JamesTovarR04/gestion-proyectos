@@ -46,7 +46,7 @@ class ProyectoController extends Controller
 
         $proyecto->save();
 
-        return response()->json(["result"=>"creado"], 201);
+        return response()->json(["result"=>"se creo el proyecto"], 201);
     }
 
     //eliminar
@@ -54,7 +54,7 @@ class ProyectoController extends Controller
     {
         $proyectoAEliminar = Proyecto::find($id);
         $proyectoAEliminar->delete();
-        return response()->json(["result"=>"eliminado"], 200);
+        return response()->json(["result"=>" se elimino el proyecto"], 200);
     }
 
     // Editar proyecto
@@ -92,6 +92,6 @@ class ProyectoController extends Controller
 
         $proyecto->save();
 
-        return response()->json(["result" => "actualizado"], 200);
+        return response()->json(["result" => " proyecto actualizado"], 200);
     }
 }
