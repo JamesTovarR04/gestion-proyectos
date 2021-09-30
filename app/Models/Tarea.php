@@ -10,4 +10,19 @@ class Tarea extends Model
     protected $collection = 'tareas';
 
     public $timestamps = false;
+
+    public function proyecto()
+    {
+        return $this->belongsTo(Proyecto::class);
+    }
+
+    public function empleado()
+    {
+        return $this->belongsTo(Empleado::class);
+    }
+
+    public function documentos()
+    {
+        return $this->hasMany(Documento::class);
+    }
 }

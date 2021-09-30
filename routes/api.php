@@ -19,29 +19,16 @@ use Illuminate\Support\Facades\Route;
 
 // RUTAS DE PROYECTOS
 Route::apiResource('proyectos', ProyectoController::class);
-// LO DE ARRIBA REEMPLAZA TODO LO DE ABAJO DESDE QUE TENGA ESTO NOMBRES
-// Route::post('proyectos', [ProyectoController::class, 'create']);
-// Route::get('proyectos', [ProyectoController::class, 'index']);
-// Route::get('proyectos/{nombre}', [ProyectoController::class, 'show']);
-// Route::delete('proyectos/{nombre}', [ProyectoController::class, 'destroy']);
-
+Route::post('proyectos/{idProyecto}/tareas',[ProyectoController::class,'addTarea']);
+Route::get('proyectos/{idProyecto}/tareas', [ProyectoController::class, 'showTareas']);
 
 // RUTAS DE EMPLEADOS
 Route::apiResource('empleados', EmpleadoController::class);
-//Route::post('empleados', [EmpleadoController::class, 'store']);
-
 
 // RUTAS DE LAS TAREAS
 Route::apiResource('tareas', TareaController::class);
-// Route::post('tareas', [TareaController::class, 'store']);
-// Route::get('tareas', [TareaController::class, 'index']);
-// Route::get('tareas/{nombre}', [TareaController::class, 'show']);
-// Route::delete('tareas/{nombre}', [TareaController::class, 'destroy']);
-
+Route::post('tareas/{idTarea}/empleado/{idEmpleado}', [TareaController::class, 'setEmpleado']);
+Route::post('tareas/{idTarea}/documentos', [TareaController::class, 'addDocument']);
 
 // RUTAS DE LOS DOCUMENTOS
 Route::apiResource('documentos', DocumentoController::class);
-//Route::post('documentos', [DocumentoController::class, 'store']);
-//Route::get('documentos', [DocumentoController::class, 'index']);
-//Route::get('documentos/{cod}', [DocumentoController::class, 'show']);
-//Route::delete('documentos/{cod}', [DocumentoController::class, 'destroy']);

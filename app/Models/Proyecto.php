@@ -10,4 +10,13 @@ class Proyecto extends Model
     protected $collection = 'proyectos';
 
     public $timestamps = false;
+
+    public function tareas(){
+        return $this->hasMany(Tarea::class);
+    }
+
+    public function promotor(){
+        return $this->embedsOne(Empleado::class);
+    }
+
 }
