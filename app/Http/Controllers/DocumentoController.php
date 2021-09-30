@@ -19,13 +19,13 @@ class DocumentoController extends Controller
     {
         return Documento::find($id);
     }
-
+  
     //eliminar documento 
     public function destroy($id)
     {
         $documentoAEliminar = Documento::find($id);
         $documentoAEliminar->delete();
-        return response()->json(["result"=>"eliminado"], 200);
+        return response()->json(["result"=>"documento eliminado"], 200);
     }
 
     //actualizar un documento
@@ -57,7 +57,7 @@ class DocumentoController extends Controller
 
         $documento->save();
 
-        return response()->json(["result" => "actualizado"], 200);
+        return response()->json(["result" => " documento actualizado"], 200);
     }
 
 }
