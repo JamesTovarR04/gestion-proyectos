@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Documento;
+use App\Models\Empleado;
 use App\Models\Tarea;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -16,39 +18,9 @@ class TareaController extends Controller
     // Buscar tareas porsu tipo
     public function show($id)
     {
-        return Tarea::find($id);
-    }
-
-    //Crear tarea
-    public function store(Request $request)
-    {
-        $validacion = Validator::make($request->all(),[
-            'nombre' => 'required|string|min:1',
-            'descripcion' => 'required|string|min:5|max:200',
-            'tipo' => 'required|string|min:1',
-            'fecha_ini_estimada' => 'required|date',
-            'fecha_ini_real' => 'required|date',
-            'duracion_estimada' => 'required|int',
-            'duracion_real' => 'required|int'
-        ]);
-
-        if($validacion->fails()){
-            return response(['errors' => $validacion->errors()->all()], 422);
-        }
-
-        $tarea = new Tarea;
-
-        $tarea->nombre = $request->nombre;
-        $tarea->descripcion = $request->descripcion;
-        $tarea->tipo = $request->tipo;
-        $tarea->fecha_ini_estimada = $request->fecha_ini_estimada;
-        $tarea->fecha_ini_real = $request->fecha_ini_real;
-        $tarea->duracion_estimada = (int)$request->duracion_estimada;
-        $tarea->duracion_real = (int)$request->duracion_real;
-
-        $tarea->save();
-
-        return response()->json(["result"=>"creado"], 201);
+        $tarea = Tarea::find($id);
+        $tarea['recurso-empleado'] = $tarea->empleado;
+        return $tarea;
     }
 
     //Eliminar tarea
@@ -68,7 +40,7 @@ class TareaController extends Controller
             'fecha_ini_estimada' => 'date',
             'fecha_ini_real' => 'date',
             'duracion_estimada' => 'int',
-            'duracion_real' => 'int'
+            'duracion_real' => 'int',
         ]);
 
         if($validacion->fails()){
@@ -103,4 +75,43 @@ class TareaController extends Controller
 
         return response()->json(["result" => "actualizado"], 200);
     }
+
+    // Establecer empleado de tarea
+    public function setEmpleado($idTarea,$idEmpleado)
+    {
+        $tarea = Tarea::find($idTarea);
+        $empleado = Empleado::find($idEmpleado);
+
+        $tarea->empleado()->associate($empleado);
+
+        $tarea->save();
+
+        return response()->json(["result" => "se estableció el empleado"], 200);
+    }
+
+    // Agregar documento
+    public function addDocument(Request $request, $idTarea)
+    {
+        $validacion = Validator::make($request->all(), [
+            'codigo'    => 'required|string|max:20',
+            'descripcion'  => 'required|string|max:200',
+            'tipo' => 'required|string|max:20'
+        ]);
+
+        if ($validacion->fails()) {
+            return response(['errors' => $validacion->errors()->all()], 422);
+        }
+
+        $documento = new Documento;
+
+        $documento->codigo = $request->codigo;
+        $documento->descripcion = $request->descripcion;
+        $documento->tipo = $request->tipo;
+
+        $tarea = Tarea::find($idTarea);
+        $tarea->documentos()->save($documento);
+
+        return response()->json(["result" => "creado"], 201);
+    }
+
 }

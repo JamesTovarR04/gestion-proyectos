@@ -9,20 +9,15 @@
 			"name": "proyectos",
 			"item": [
 				{
-					"name": "crear proyecto",
+					"name": "Crear",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/proyectos/?nombre_clave=proyecto-sade 2&denominacion_comercial=tecnologica&fecha_inicio=29-09-21&fecha_finalizacion=29-09-21&estado=1",
-							"protocol": "http",
+							"raw": "{{host}}/api/proyectos/?nombre_clave=proyecto-manhattan&denominacion_comercial=tecnologica&fecha_inicio=29-09-21&fecha_finalizacion=29-09-21&estado=1",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"proyectos",
@@ -31,7 +26,7 @@
 							"query": [
 								{
 									"key": "nombre_clave",
-									"value": "proyecto-sade 2"
+									"value": "proyecto-manhattan"
 								},
 								{
 									"key": "denominacion_comercial",
@@ -55,20 +50,15 @@
 					"response": []
 				},
 				{
-					"name": "mostrar_proyecto",
+					"name": "Listar",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/proyectos/",
-							"protocol": "http",
+							"raw": "{{host}}/api/proyectos/",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"proyectos",
@@ -79,20 +69,15 @@
 					"response": []
 				},
 				{
-					"name": "buscar_proyecto",
+					"name": "Mostrar",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/proyectos/proyecto-nasa",
-							"protocol": "http",
+							"raw": "{{host}}/api/proyectos/proyecto-nasa",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"proyectos",
@@ -103,24 +88,113 @@
 					"response": []
 				},
 				{
-					"name": "eliminar_proyecto",
+					"name": "Actualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/proyectos/61553a49801400001d004e23",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"proyectos",
+								"61553a49801400001d004e23"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/proyectos/proyecto-nasa",
-							"protocol": "http",
+							"raw": "{{host}}/api/proyectos/proyecto-nasa",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"proyectos",
 								"proyecto-nasa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Agregar_Tarea",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/proyectos/61553a49801400001d004e23/tareas?nombre=Resolver WZ COSA&descripcion=Insertar validaciones de creación de objetos que no se repitan&tipo=Tecnico&fecha_ini_estimada=29-09-2021&fecha_ini_real=29-10-2021&duracion_estimada=2&duracion_real=2",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"proyectos",
+								"61553a49801400001d004e23",
+								"tareas"
+							],
+							"query": [
+								{
+									"key": "nombre",
+									"value": "Resolver WZ COSA"
+								},
+								{
+									"key": "descripcion",
+									"value": "Insertar validaciones de creación de objetos que no se repitan"
+								},
+								{
+									"key": "tipo",
+									"value": "Tecnico"
+								},
+								{
+									"key": "fecha_ini_estimada",
+									"value": "29-09-2021"
+								},
+								{
+									"key": "fecha_ini_real",
+									"value": "29-10-2021"
+								},
+								{
+									"key": "duracion_estimada",
+									"value": "2"
+								},
+								{
+									"key": "duracion_real",
+									"value": "2"
+								},
+								{
+									"key": "id_empleado",
+									"value": "61553c5a801400001d004e25",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar_Tareas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/proyectos/61553a49801400001d004e23/tareas",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"proyectos",
+								"61553a49801400001d004e23",
+								"tareas"
 							]
 						}
 					},
@@ -132,20 +206,15 @@
 			"name": "empleados",
 			"item": [
 				{
-					"name": "crear_empleado",
+					"name": "Crear",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/empleados/?identificacion=6545&nombre=angelica&apellido=tovar&direccion=cr 1 %23 67-31&telefono=321456789&correo_electronico=usuario@gmail.com&fecha_contrato=08-06-2010",
-							"protocol": "http",
+							"raw": "{{host}}/api/empleados/?identificacion=6545&nombre=angelica&apellido=tovar&direccion=cr 1 %23 67-31&telefono=321456789&correo_electronico=usuario@gmail.com&fecha_contrato=08-06-2010",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"empleados",
@@ -186,20 +255,33 @@
 					"response": []
 				},
 				{
-					"name": "mostrar_empleado",
+					"name": "Listar",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/empleados/12345",
-							"protocol": "http",
+							"raw": "{{host}}/api/empleados",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{host}}"
 							],
-							"port": "8000",
+							"path": [
+								"api",
+								"empleados"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mostrar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/empleados/12345",
+							"host": [
+								"{{host}}"
+							],
 							"path": [
 								"api",
 								"empleados",
@@ -210,60 +292,39 @@
 					"response": []
 				},
 				{
-					"name": "buscar empleado",
+					"name": "Actualizar",
 					"request": {
-						"method": "GET",
+						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/empleados/12345",
-							"protocol": "http",
+							"raw": "{{host}}/api/empleados/61553c5a801400001d004e25",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"empleados",
-								"12345"
+								"61553c5a801400001d004e25"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "eliminar empleado",
+					"name": "Eliminar",
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/empleados/1234",
-							"protocol": "http",
+							"raw": "{{host}}/api/empleados/1234",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"empleados",
 								"1234"
 							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "actualizar datos empleado",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": ""
 						}
 					},
 					"response": []
@@ -274,53 +335,37 @@
 			"name": "tareas",
 			"item": [
 				{
-					"name": "Create",
+					"name": "Listar",
 					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/tareas?nombre=Resolver requerimiento 1&descripcion=Insertar validaciones de creación de objetos que no se repitan&tipo=Tecnico&fecha_ini_estimada=29-09-2021&fecha_ini_real=29-10-2021&duracion_estimada=2&duracion_real=2",
-							"protocol": "http",
+							"raw": "{{host}}/api/tareas",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"tareas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mostrar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/tareas/6155485f801400001d004e28",
+							"host": [
+								"{{host}}"
 							],
-							"query": [
-								{
-									"key": "nombre",
-									"value": "Resolver requerimiento 1"
-								},
-								{
-									"key": "descripcion",
-									"value": "Insertar validaciones de creación de objetos que no se repitan"
-								},
-								{
-									"key": "tipo",
-									"value": "Tecnico"
-								},
-								{
-									"key": "fecha_ini_estimada",
-									"value": "29-09-2021"
-								},
-								{
-									"key": "fecha_ini_real",
-									"value": "29-10-2021"
-								},
-								{
-									"key": "duracion_estimada",
-									"value": "2"
-								},
-								{
-									"key": "duracion_real",
-									"value": "2"
-								}
+							"path": [
+								"api",
+								"tareas",
+								"6155485f801400001d004e28"
 							]
 						}
 					},
@@ -332,15 +377,10 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/tareas/Resolver requerimiento 1",
-							"protocol": "http",
+							"raw": "{{host}}/api/tareas/Resolver requerimiento 1",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"tareas",
@@ -351,83 +391,34 @@
 					"response": []
 				},
 				{
-					"name": "Update",
+					"name": "Actualizar",
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": ""
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "List",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://127.0.0.1:8000/api/tareas",
-							"protocol": "http",
+							"raw": "{{host}}/api/tareas/615548b0801400001d004e29",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{host}}"
 							],
-							"port": "8000",
-							"path": [
-								"api",
-								"tareas"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Search",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://127.0.0.1:8000/api/tareas/Resolver requerimiento 2",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
 							"path": [
 								"api",
 								"tareas",
-								"Resolver requerimiento 2"
+								"615548b0801400001d004e29"
 							]
 						}
 					},
 					"response": []
-				}
-			]
-		},
-		{
-			"name": "documentos",
-			"item": [
+				},
 				{
-					"name": "crear documento",
+					"name": "Agregar_documento",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/documentos/?codigo=analisiv1&descripcion=documento de analisis&tipo=pdf",
-							"protocol": "http",
+							"raw": "{{host}}/api/documentos/?codigo=analisiv1&descripcion=documento de analisis&tipo=pdf",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"documentos",
@@ -452,17 +443,41 @@
 					"response": []
 				},
 				{
-					"name": "mostrar_documento",
+					"name": "Asignar_empleado",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/tareas/6155485f801400001d004e28/empleado/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"tareas",
+								"6155485f801400001d004e28",
+								"empleado",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "documentos",
+			"item": [
+				{
+					"name": "Listar",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/api/documentos",
-							"protocol": "http",
+							"raw": "{{host}}/api/documentos",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"documentos"
@@ -472,48 +487,63 @@
 					"response": []
 				},
 				{
-					"name": "buscar docuemento",
+					"name": "Mostrar",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/documentos/4000",
-							"protocol": "http",
+							"raw": "{{host}}/api/documentos/61554d76801400001d004e2b",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"documentos",
-								"4000"
+								"61554d76801400001d004e2b"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "eliminar docuemento",
+					"name": "Eliminar",
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/documentos/1",
-							"protocol": "http",
+							"raw": "{{host}}/api/documentos/61554d76801400001d004e2b",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"documentos",
-								"1"
+								"61554d76801400001d004e2b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/documentos/61554d76801400001d004e2b?descripcion=ejemplo descripcion",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"documentos",
+								"61554d76801400001d004e2b"
+							],
+							"query": [
+								{
+									"key": "descripcion",
+									"value": "ejemplo descripcion"
+								}
 							]
 						}
 					},
