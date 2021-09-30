@@ -54,4 +54,36 @@ class DocumentoController extends Controller
         return response()->json(["result"=>"eliminado"], 200);
     }
 
+    //actualizar un documento
+    public function update(Request $request, $id){
+
+        $validacion = Validator::make($request->all(),[
+            'codigo'    => 'string|max:20',
+            'descripcion'  => 'string|max:200',
+            'tipo' => 'string|max:20'
+        ]);
+
+        if($validacion->fails()){
+            return response(['errors' => $validacion->errors()->all()], 422);
+        }
+
+        $documento = Documento::find($id);
+
+        if($request['codigo']){
+            $documento->codigo = $request['codigo'];
+        }
+
+        if($request['descripcion']){
+            $documento->descripcion = $request['descripcion'];
+        }
+
+        if($request['tipo']){
+            $documento->tipo = $request['tipo'];
+        }
+
+        $documento->save();
+
+        return response()->json(["result" => "actualizado"], 200);
+    }
+
 }

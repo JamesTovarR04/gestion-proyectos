@@ -62,4 +62,57 @@ class EmpleadoController extends Controller
         return response()->json(["result"=>"eliminado"], 200);
     }
 
+    //Editar un empleado 
+    public function update(Request $request, $id){
+
+        $validacion = Validator::make($request->all(),[
+            'identificacion'    => 'int',
+            'nombre'  => 'string|max:200',
+            'apellido'  => 'string|max:200',
+            'direccion'  => 'string|max:40',
+            'telefono'  => 'string|max:30',
+            'correo_electronico'  => 'string|max:200',
+            'fecha_contrato'     => 'date',
+        ]);
+        
+        if($validacion->fails()){
+            return response(['errors' => $validacion->errors()->all()], 422);
+        }
+
+        $empleado = Empleado::find($id);
+
+        if($request['identificacion']){
+            $empleado->identificacion = $request['identificacion'];
+        }
+
+        if($request['nombre']){
+            $empleado->nombre = $request['nombre'];
+        }
+
+        if($request['apellido']){
+            $empleado->apellido = $request['apellido'];
+        }
+
+        if($request['direccion']){
+            $empleado->direccion = $request['direccion'];
+        }
+
+        if($request['telefono']){
+            $empleado->telefono = $request['telefono'];
+        }
+
+        if($request['correo_electronico']){
+            $empleado->correo_electronico = $request['correo_electronico'];
+        }
+        
+        if($request['fecha_contrato']){
+            $empleado->fecha_contrato = $request['fecha_contrato'];
+        }
+
+        $empleado->save();
+
+        return response()->json(["result" => "actualizado"], 200);
+
+    }
+
 }
